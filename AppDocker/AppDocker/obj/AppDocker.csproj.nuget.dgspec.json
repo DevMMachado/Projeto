@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mpand\\source\\repos\\AppDocker\\AppDocker\\AppDocker.csproj": {}
+    "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mpand\\source\\repos\\AppDocker\\AppDocker\\AppDocker.csproj": {
+    "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpand\\source\\repos\\AppDocker\\AppDocker\\AppDocker.csproj",
+        "projectUniqueName": "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj",
         "projectName": "AppDocker",
-        "projectPath": "C:\\Users\\mpand\\source\\repos\\AppDocker\\AppDocker\\AppDocker.csproj",
+        "projectPath": "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj",
         "packagesPath": "C:\\Users\\mpand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpand\\source\\repos\\AppDocker\\AppDocker\\obj\\",
+        "outputPath": "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mpand\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,9 +42,29 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNet.WebApi": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.10.9, )"
+            },
+            "PInvoke.BCrypt": {
+              "target": "Package",
+              "version": "[0.7.78, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.8.0, )"
             }
           },
           "imports": [
