@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jUvqHacInwqXkVh+V+gbsMme0DT8YmrM1b+D+JiTVV2YZTQw2wh/lby6c4PUcn7SNRCv+P9C+i4dIWQMwLlyIA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mpand\\source\\repos\\AppDocker\\AppDocker\\AppDocker.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mpand\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
