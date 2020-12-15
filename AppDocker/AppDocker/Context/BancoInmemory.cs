@@ -38,31 +38,32 @@ namespace AppDocker.Context
                 .WithMany(e => e.Usuario)
                 .HasForeignKey(x => x.PhonesId);
 
-            //var Phones = modelBuilder.Entity<Phones>().HasData(new Phones()
-            //{
-            //    IdPhone = Guid.NewGuid(),
-            //    Number = "1111111111111",
-            //    Ddd = "123",
+            var Phones = modelBuilder.Entity<Phones>().HasData(new Phones()
+            {
+                IdPhone = Guid.NewGuid(),
+                Number = "1111111111111",
+                Ddd = "123",
 
-            //});
+            });
 
-            //modelBuilder.Entity<Usuarios>().HasData(new Usuarios()
+            modelBuilder.Entity<Usuarios>().HasData(new Usuarios()
 
-            //{
-            //    IdUser = Guid.NewGuid(),
-            //    Name = "jose ",
-            //    Email = "jose_m32@gmail.com",
-            //    Password = "123",
-                
-                
-            //});
-             
-            
+            {
+                IdUser = Guid.NewGuid(),
+                Name = "jose ",
+                Email = "jose_m32@gmail.com",
+                Password = "123",
+                Phone = Phones,
 
-         
-            
 
-    }
+            }); 
+
+
+
+
+
+
+        }
 
        
     }
