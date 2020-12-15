@@ -27,6 +27,7 @@ namespace AppDocker.Context
             {
                 Id = Guid.NewGuid(),
                 Name = "jose ",
+                Email = "jose_m32@gmail.com",
                 Password = "123",
                 Phones = new List<Phones>()
                 {
