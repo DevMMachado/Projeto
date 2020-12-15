@@ -22,7 +22,7 @@ namespace AppDocker.Controllers
         {
             try
             {
-
+               
                 return Ok(_banco.Usuario.ToList());
             }
             catch (Exception erro)
@@ -31,6 +31,7 @@ namespace AppDocker.Controllers
                 return BadRequest(erro);
             }
         }
+
 
         [HttpGet("{Id}")]
 

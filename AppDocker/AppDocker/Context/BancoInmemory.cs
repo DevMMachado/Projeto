@@ -10,18 +10,19 @@ namespace AppDocker.Context
     public class BancoInmemory : DbContext
     {
         public DbSet<Usuarios> Usuario { get; set; }
+        public DbSet<Phones> Phone { get; set; }
         public BancoInmemory(DbContextOptions options) : base(options) { }
 
         public BancoInmemory() => this.Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.UseInMemoryDatabase("Banco");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuarios>().HasKey(c => c.Id);
             modelBuilder.Entity<Phones>().HasNoKey();
+
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios()
 
             {
@@ -33,15 +34,15 @@ namespace AppDocker.Context
                 {
                    new Phones()
                    {
-                       
+                       IdUsuario= Guid.NewGuid(),
                        Number ="123",
                        Ddd="123"
                    }
                 }
-            }); ; 
-            
-           
-        }
+
+            });
+
+    }
 
        
     }
