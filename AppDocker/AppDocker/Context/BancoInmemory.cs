@@ -20,27 +20,47 @@ namespace AppDocker.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Usuarios>().HasKey(c => c.Id);
-            modelBuilder.Entity<Phones>().HasNoKey();
 
-            modelBuilder.Entity<Usuarios>().HasData(new Usuarios()
+            modelBuilder.Entity<Usuarios>()
+                .HasKey(x => x.IdUser);
 
-            {
-                Id = Guid.NewGuid(),
-                Name = "jose ",
-                Email = "jose_m32@gmail.com",
-                Password = "123",
-                Phones = new List<Phones>()
-                {
-                   new Phones()
-                   {
-                       IdUsuario= Guid.NewGuid(),
-                       Number ="123",
-                       Ddd="123"
-                   }
-                }
+            modelBuilder.Entity<Phones>()
+                .HasKey(x => x.IdPhone);
 
-            });
+            modelBuilder.Entity<UsuarioPhone>()
+                .HasKey(x => new { x.UsuariosId, x.PhonesId });
+            modelBuilder.Entity<UsuarioPhone>()
+                .HasOne(x => x.Usuario)
+                .WithMany(m => m.Phone)
+                .HasForeignKey(x => x.UsuariosId);
+            modelBuilder.Entity<UsuarioPhone>()
+                .HasOne(x => x.Phone)
+                .WithMany(e => e.Usuario)
+                .HasForeignKey(x => x.PhonesId);
+
+            //var Phones = modelBuilder.Entity<Phones>().HasData(new Phones()
+            //{
+            //    IdPhone = Guid.NewGuid(),
+            //    Number = "1111111111111",
+            //    Ddd = "123",
+
+            //});
+
+            //modelBuilder.Entity<Usuarios>().HasData(new Usuarios()
+
+            //{
+            //    IdUser = Guid.NewGuid(),
+            //    Name = "jose ",
+            //    Email = "jose_m32@gmail.com",
+            //    Password = "123",
+                
+                
+            //});
+             
+            
+
+         
+            
 
     }
 

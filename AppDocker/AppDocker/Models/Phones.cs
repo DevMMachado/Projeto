@@ -9,10 +9,11 @@ namespace AppDocker.Models
 {
     public class Phones
     {
-        [ForeignKey("Usuarios")]
-        public Guid IdUsuario { get; set; }
+        public Guid IdPhone { get; set; }
         public string Number { get; set; }
         public string Ddd { get; set; }
+
+        public List<UsuarioPhone> Usuario { get; set; }
 
     }
 }

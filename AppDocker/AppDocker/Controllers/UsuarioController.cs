@@ -39,8 +39,8 @@ namespace AppDocker.Controllers
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Where(c => c.Id == id).FirstOrDefault();
-                if (usuarioAtual != null)
+                var usuarioAtual = _banco.Usuario.Where(c => c.IdUser == id).FirstOrDefault();
+                if (usuarioAtual == null)
                     return NotFound();
                 else
                     return Ok(usuarioAtual);
@@ -76,15 +76,15 @@ namespace AppDocker.Controllers
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Where(c => c.Id == id).FirstOrDefault();
-                if (usuarioAtual != null)
+                var usuarioAtual = _banco.Usuario.Where(c => c.IdUser == id).FirstOrDefault();
+                if (usuarioAtual == null)
                     return NotFound();
                 else
                 {
                     usuarioAtual.Name = usuario.Name;
                     usuarioAtual.Email = usuario.Email;
                     usuarioAtual.Password = usuario.Password;
-                    usuarioAtual.Phones = usuario.Phones;
+                    usuarioAtual.Phone = usuario.Phone;
                     _banco.Update(usuarioAtual);
                     _banco.SaveChanges();
                 }
@@ -104,8 +104,8 @@ namespace AppDocker.Controllers
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Where(c => c.Id == id).FirstOrDefault();
-                if (usuarioAtual != null)
+                var usuarioAtual = _banco.Usuario.Where(c => c.IdUser == id).FirstOrDefault();
+                if (usuarioAtual == null)
                     return NotFound();
                 else
                 {
