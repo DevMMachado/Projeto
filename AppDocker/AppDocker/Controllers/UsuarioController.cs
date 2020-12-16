@@ -22,7 +22,6 @@ namespace AppDocker.Controllers
         {
             try
             {
-               
                 return Ok(_banco.Usuario.ToList());
             }
             catch (Exception erro)
@@ -57,7 +56,8 @@ namespace AppDocker.Controllers
         public IActionResult Post([FromBody]Usuarios usuario)
         {
             try
-            {
+            { 
+               
                 _banco.Usuario.Add(usuario);
                 _banco.SaveChanges();
                 return Ok();
@@ -84,7 +84,7 @@ namespace AppDocker.Controllers
                     usuarioAtual.Name = usuario.Name;
                     usuarioAtual.Email = usuario.Email;
                     usuarioAtual.Password = usuario.Password;
-                    usuarioAtual.Phone = usuario.Phone;
+                    usuarioAtual.Phones = usuario.Phones;
                     _banco.Update(usuarioAtual);
                     _banco.SaveChanges();
                 }

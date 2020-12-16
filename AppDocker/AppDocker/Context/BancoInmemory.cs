@@ -16,57 +16,50 @@ namespace AppDocker.Context
         public BancoInmemory() => this.Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.UseInMemoryDatabase("Banco");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+
+            modelBuilder.Entity<Usuarios>().HasKey(x => x.IdUser);
+
+            modelBuilder.Entity<Phones>().HasKey(x => x.IdPhone);
+
+
             modelBuilder.Entity<Usuarios>()
-                .HasKey(x => x.IdUser);
+            .HasMany(b => b.Phones)
+            .WithOne()
+            .HasForeignKey(p => p.UsuarioFK);
 
-            modelBuilder.Entity<Phones>()
-                .HasKey(x => x.IdPhone);
-
-            modelBuilder.Entity<UsuarioPhone>()
-                .HasKey(x => new { x.UsuariosId, x.PhonesId });
-            modelBuilder.Entity<UsuarioPhone>()
-                .HasOne(x => x.Usuario)
-                .WithMany(m => m.Phone)
-                .HasForeignKey(x => x.UsuariosId);
-            modelBuilder.Entity<UsuarioPhone>()
-                .HasOne(x => x.Phone)
-                .WithMany(e => e.Usuario)
-                .HasForeignKey(x => x.PhonesId);
-
-            var Phones = modelBuilder.Entity<Phones>().HasData(new Phones()
+            List<Phones> ListPhones = new List<Phones>
             {
-                IdPhone = Guid.NewGuid(),
-                Number = "1111111111111",
-                Ddd = "123",
+                new Phones { IdPhone = 1, Number = "1111111111", DDD = "111", UsuarioFK = Guid.NewGuid() },
+                new Phones { IdPhone = 2, Number = "1111222211", DDD = "1211", UsuarioFK = Guid.NewGuid() }
+            };
+            modelBuilder.Entity<Phones>().HasData(ListPhones);
 
-            });
 
-            modelBuilder.Entity<Usuarios>().HasData(new Usuarios()
 
+            modelBuilder.Entity<Usuarios>().HasData(new Usuarios
             {
                 IdUser = Guid.NewGuid(),
-                Name = "jose ",
-                Email = "jose_m32@gmail.com",
-                Password = "123",
-                Phone = Phones,
+                Name = "jose",
+                Email = "jose23@gmail.com",
+                Password = "js23",
+                Phones = ListPhones,
 
 
-            }); 
 
-
+            }) ;
 
 
 
 
         }
-
-       
     }
-
-    
 }
+
+
+

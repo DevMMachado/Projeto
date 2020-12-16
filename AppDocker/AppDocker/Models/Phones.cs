@@ -9,11 +9,20 @@ namespace AppDocker.Models
 {
     public class Phones
     {
-        public Guid IdPhone { get; set; }
-        public string Number { get; set; }
-        public string Ddd { get; set; }
+        [Key]
+        public virtual int IdPhone { get; set; }
+        public virtual string Number { get; set; }
+        public virtual string DDD { get; set; }
 
-        public List<UsuarioPhone> Usuario { get; set; }
+        [ForeignKey("Usuarios")]
+        public Guid UsuarioFK { get; set; }
+
+        public virtual Usuarios Usuario { get; set; }
+
+
+
+
+
 
     }
 }

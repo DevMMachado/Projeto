@@ -10,16 +10,12 @@ namespace AppDocker.Models
     public class Usuarios
     {
         [Key]
-        public Guid IdUser { get; set; }
-        public string Name { get; set; }
+        public virtual Guid IdUser { get; set; }
 
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-
-        public List<UsuarioPhone> Phone { get; set; }
-
-
-
+        public virtual string Name { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string Password { get; set; }
+        public virtual List<Phones> Phones { get; set; }
     }
+
 }
