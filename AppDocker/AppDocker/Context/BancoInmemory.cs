@@ -28,7 +28,7 @@ namespace AppDocker.Context
 
 
             modelBuilder.Entity<Usuarios>()
-            .HasMany(b => b.phones)
+            .HasMany(b => b.Phones)
             .WithOne(b => b.User);
 
 

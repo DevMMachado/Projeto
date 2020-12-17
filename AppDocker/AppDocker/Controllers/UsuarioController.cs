@@ -17,13 +17,12 @@ namespace AppDocker.Controllers
         private readonly BancoInmemory _banco;
         public UsuarioController(BancoInmemory Banco) => _banco = Banco;
 
-
         [HttpGet]
         public IActionResult Index()
         {
             try
             {
-                IList<Usuarios> usuario = _banco.Usuario.Include(c => c.phones).ToList();
+                IList<Usuarios> usuario = _banco.Usuario.Include(c => c.Phones).ToList();
              
                 
                 return Ok(usuario);
@@ -43,7 +42,7 @@ namespace AppDocker.Controllers
             try
             {
 
-                var usuarioAtual = _banco.Usuario.Include(c => c.phones).Where(c => c.IdUser == id).FirstOrDefault();
+                var usuarioAtual = _banco.Usuario.Include(c => c.Phones).Where(c => c.IdUser == id).FirstOrDefault();
                 if (usuarioAtual == null)
                     return NotFound();
                 else
@@ -56,16 +55,28 @@ namespace AppDocker.Controllers
             }
         }
 
+        public string Data = string.Format("{0:d/MM/yyyy HH:mm:ss}", DateTime.UtcNow);
+
         [HttpPost]
         public IActionResult Post([FromBody]Usuarios usuario)
         {
             try
             {
-             
-                _banco.Usuario.Add(usuario);
+                bool containsItem = _banco.Usuario.Any(item => item.Email == usuario.Email);
+                if (!containsItem)
+                {
+                    usuario.Created = Data;
+                    usuario.Last_login = Data;
+                    _banco.Usuario.Add(usuario);
 
-                _banco.SaveChanges();
-                return Ok();
+                    _banco.SaveChanges();
+                    return Ok();
+                }
+                else
+                {
+                    string Existe = "E-mail já existente";
+                    return Ok(Existe);
+                }
 
             }
             catch (Exception erro)
@@ -81,20 +92,30 @@ namespace AppDocker.Controllers
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Include(c => c.phones).Where(c => c.IdUser == id).FirstOrDefault();
-                if (usuarioAtual == null)
-                    return NotFound();
+                bool containsItem = _banco.Usuario.Any(item => item.Email == usuario.Email);
+                if (!containsItem)
+                {
+                    var usuarioAtual = _banco.Usuario.Include(c => c.Phones).Where(c => c.IdUser == id).FirstOrDefault();
+                    if (usuarioAtual == null)
+                        return NotFound();
+                    else
+                    {
+                        usuarioAtual.Name = usuario.Name;
+                        usuarioAtual.Email = usuario.Email;
+                        usuarioAtual.Password = usuario.Password;
+                        usuarioAtual.Phones = usuario.Phones;
+                        usuarioAtual.Modified = Data;
+                        _banco.Update(usuarioAtual);
+                        _banco.SaveChanges();
+                    }
+
+                    return Ok();
+                }
                 else
                 {
-                    usuarioAtual.Name = usuario.Name;
-                    usuarioAtual.Email = usuario.Email;
-                    usuarioAtual.Password = usuario.Password;
-                    usuarioAtual.phones = usuario.phones;
-                    _banco.Update(usuarioAtual);
-                    _banco.SaveChanges();
+                    string Existe = "E-mail já existente";
+                    return Ok(Existe);
                 }
-
-                return Ok();
             }
             catch (Exception erro)
             {
@@ -109,7 +130,7 @@ namespace AppDocker.Controllers
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Include(c => c.phones).Where(c => c.IdUser == id).FirstOrDefault();
+                var usuarioAtual = _banco.Usuario.Include(c => c.Phones).Where(c => c.IdUser == id).FirstOrDefault();
                 if (usuarioAtual == null)
                     return NotFound();
                 else
