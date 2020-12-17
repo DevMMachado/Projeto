@@ -56,3 +56,5 @@ C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\obj\Debug\netcoreapp
 C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\obj\Debug\netcoreapp3.1\AppDocker.dll
 C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\obj\Debug\netcoreapp3.1\AppDocker.pdb
 C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\obj\Debug\netcoreapp3.1\AppDocker.genruntimeconfig.cache
+C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

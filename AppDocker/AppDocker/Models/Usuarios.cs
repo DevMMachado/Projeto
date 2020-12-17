@@ -9,13 +9,17 @@ namespace AppDocker.Models
 {
     public class Usuarios
     {
-        [Key]
+        public Usuarios()
+        {
+            phones = new HashSet<Phones>();
+        }
         public virtual Guid IdUser { get; set; }
-
         public virtual string Name { get; set; }
         public virtual string Email { get; set; }
         public virtual string Password { get; set; }
-        public virtual List<Phones> Phones { get; set; }
+
+        public virtual ICollection<Phones> phones { get; set; }
+    
     }
 
 }

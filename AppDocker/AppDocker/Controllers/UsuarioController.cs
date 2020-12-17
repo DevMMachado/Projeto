@@ -2,6 +2,7 @@
 using AppDocker.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,14 @@ namespace AppDocker.Controllers
 
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Index()
         {
             try
             {
-                return Ok(_banco.Usuario.ToList());
+                IList<Usuarios> usuario = _banco.Usuario.Include(c => c.phones).ToList();
+             
+                
+                return Ok(usuario);
             }
             catch (Exception erro)
             {
@@ -38,7 +42,8 @@ namespace AppDocker.Controllers
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Where(c => c.IdUser == id).FirstOrDefault();
+
+                var usuarioAtual = _banco.Usuario.Include(c => c.phones).Where(c => c.IdUser == id).FirstOrDefault();
                 if (usuarioAtual == null)
                     return NotFound();
                 else
@@ -52,13 +57,13 @@ namespace AppDocker.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Post([FromBody]Usuarios usuario)
         {
             try
-            { 
-               
+            {
+             
                 _banco.Usuario.Add(usuario);
+
                 _banco.SaveChanges();
                 return Ok();
 
@@ -69,14 +74,14 @@ namespace AppDocker.Controllers
                 return BadRequest(erro);
             }
         }
-        
+
         [HttpPut("{id}")]
 
         public IActionResult Put(Guid id,[FromBody]Usuarios usuario)
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Where(c => c.IdUser == id).FirstOrDefault();
+                var usuarioAtual = _banco.Usuario.Include(c => c.phones).Where(c => c.IdUser == id).FirstOrDefault();
                 if (usuarioAtual == null)
                     return NotFound();
                 else
@@ -84,7 +89,7 @@ namespace AppDocker.Controllers
                     usuarioAtual.Name = usuario.Name;
                     usuarioAtual.Email = usuario.Email;
                     usuarioAtual.Password = usuario.Password;
-                    usuarioAtual.Phones = usuario.Phones;
+                    usuarioAtual.phones = usuario.phones;
                     _banco.Update(usuarioAtual);
                     _banco.SaveChanges();
                 }
@@ -104,7 +109,7 @@ namespace AppDocker.Controllers
         {
             try
             {
-                var usuarioAtual = _banco.Usuario.Where(c => c.IdUser == id).FirstOrDefault();
+                var usuarioAtual = _banco.Usuario.Include(c => c.phones).Where(c => c.IdUser == id).FirstOrDefault();
                 if (usuarioAtual == null)
                     return NotFound();
                 else
