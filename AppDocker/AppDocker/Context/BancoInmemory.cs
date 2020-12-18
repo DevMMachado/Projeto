@@ -16,44 +16,31 @@ namespace AppDocker.Context
         public BancoInmemory() => this.Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.UseInMemoryDatabase("Banco");
         }
+        public string Data = string.Format("{0:d/MM/yyyy HH:mm:ss}", DateTime.UtcNow);
+       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
 
             modelBuilder.Entity<Usuarios>().HasKey(x => x.IdUser);
             modelBuilder.Entity<Phones>().HasKey(x => x.IdPhone);
+            modelBuilder.Entity<Usuarios>().HasMany(b => b.Phones).WithOne(b => b.User);
 
 
-            modelBuilder.Entity<Usuarios>()
-            .HasMany(b => b.Phones)
-            .WithOne(b => b.User);
-
-
-
-            //    List<Phones> ListPhones = new List<Phones>
-            //    {
-            //        new Phones { Number = "1111111111", DDD = "111" },
-            //        new Phones { Number = "1111222211", DDD = "1211"}
-            //    };
-            //    modelBuilder.Entity<Phones>().HasData(ListPhones);
-
-
-
-            //    modelBuilder.Entity<Usuarios>().HasData(new Usuarios
-            //    {
-            //        IdUser = Guid.NewGuid(),
-            //        Name = "jose",
-            //        Email = "jose23@gmail.com",
-            //        Password = "js23",
-            //        Phones = ListPhones,
-
-
-
-            //    }) ;
-
+            modelBuilder.Entity<Usuarios>().HasData(new Usuarios
+            {
+                IdUser = Guid.NewGuid(),
+                Name = "admin",
+                Email = "admin@com.br",
+                Password = "admin",
+                Created = Data,
+                Last_login = Data,
+                //Phones = new HashSet<Phones>() { new Phones() { Number = "11111", DDD = "2222" } },
+            }
+            );
 
         }
 

@@ -13,7 +13,7 @@ namespace AppDocker.Models
         {
             Phones = new HashSet<Phones>();
         }
-        public virtual Guid IdUser { get; set; }
+        public virtual Guid IdUser { get; set; } 
         public virtual string Name { get; set; }
         public virtual string Email { get; set; }
         public virtual string Password { get; set; }
@@ -24,7 +24,7 @@ namespace AppDocker.Models
 
         public virtual string Last_login { get; set; } 
    
-
+        public virtual string Token { get; set; }
         public virtual ICollection<Phones> Phones { get; set; }
     
     }

@@ -58,3 +58,8 @@ C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\obj\Debug\netcoreapp
 C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\obj\Debug\netcoreapp3.1\AppDocker.genruntimeconfig.cache
 C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\System.Reactive.dll
+C:\Users\mpand\Documents\GitHub\Projeto\AppDocker\AppDocker\bin\Debug\netcoreapp3.1\System.Reactive.xml
