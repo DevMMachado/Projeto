@@ -24,7 +24,7 @@ namespace AppDocker.Services
                 new Claim(ClaimTypes.Email, usuarios.Email.ToString()),
                 new Claim(ClaimTypes.SerialNumber, usuarios.Password.ToString()),
             }),
-                Expires = DateTime.UtcNow.AddMinutes(30),
+               Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = 
                 new SigningCredentials(
                     new SymmetricSecurityKey(key),

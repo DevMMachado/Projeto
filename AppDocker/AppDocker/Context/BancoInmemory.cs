@@ -38,7 +38,7 @@ namespace AppDocker.Context
                 Password = "admin",
                 Created = Data,
                 Last_login = Data,
-                //Phones = new HashSet<Phones>() { new Phones() { Number = "11111", DDD = "2222" } },
+                
             }
             );
 

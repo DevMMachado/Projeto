@@ -2,7 +2,7 @@
 using AppDocker.Models;
 using AppDocker.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -110,9 +110,13 @@ namespace AppDocker.Controllers
                   
                     else
                     {
+                        if(usuario.Name != null)
                         usuarioAtual.Name = usuario.Name;
+                        if (usuario.Email != null)
                         usuarioAtual.Email = usuario.Email;
+                        if (usuario.Password != null)
                         usuarioAtual.Password = usuario.Password;
+                        
                         usuarioAtual.Phones = usuario.Phones;
                         usuarioAtual.Modified = Data;
                         _banco.Update(usuarioAtual);
