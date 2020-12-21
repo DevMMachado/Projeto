@@ -1,22 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj": {}
+    "C:\\Users\\Marcio Machado\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj": {
+    "C:\\Users\\Marcio Machado\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj",
+        "projectUniqueName": "C:\\Users\\Marcio Machado\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj",
         "projectName": "AppDocker",
-        "projectPath": "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj",
-        "packagesPath": "C:\\Users\\mpand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpand\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\obj\\",
+        "projectPath": "C:\\Users\\Marcio Machado\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\AppDocker.csproj",
+        "packagesPath": "C:\\Users\\Marcio Machado\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Marcio Machado\\Documents\\GitHub\\Projeto\\AppDocker\\AppDocker\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mpand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Marcio Machado\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -28,7 +33,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,7 +44,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNet.WebApi": {
               "target": "Package",
@@ -97,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

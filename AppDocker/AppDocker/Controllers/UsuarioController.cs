@@ -84,7 +84,7 @@ namespace AppDocker.Controllers
                 else
                 {
                     string Existe = "E-mail já existente";
-                    return Ok(Existe);
+                    return BadRequest(Existe);
                 }
 
             }
@@ -101,34 +101,35 @@ namespace AppDocker.Controllers
         {
             try
             {
-                bool containsItem = _banco.Usuario.Any(item => item.Email == usuario.Email);
-                if (!containsItem)
-                {
-                    var usuarioAtual = _banco.Usuario.Include(c => c.Phones).Where(c => c.IdUser == id).FirstOrDefault();
-                    if (usuarioAtual == null)
-                        return NotFound();
-                  
-                    else
+                bool containsItem = _banco.Usuario.Where(c => c.IdUser != id).Any(item => item.Email == usuario.Email);
+          
+                if(!containsItem)
                     {
-                        if(usuario.Name != null)
-                        usuarioAtual.Name = usuario.Name;
-                        if (usuario.Email != null)
-                        usuarioAtual.Email = usuario.Email;
-                        if (usuario.Password != null)
-                        usuarioAtual.Password = usuario.Password;
+                        var usuarioAtual = _banco.Usuario.Include(c => c.Phones).Where(c => c.IdUser == id).FirstOrDefault();
+                        if (usuarioAtual == null)
+                            return NotFound();
+                  
+                        else
+                        {
+                            if(usuario.Name != null)
+                            usuarioAtual.Name = usuario.Name;
+                            if (usuario.Email != null)
+                            usuarioAtual.Email = usuario.Email;
+                            if (usuario.Password != null)
+                            usuarioAtual.Password = usuario.Password;
                         
-                        usuarioAtual.Phones = usuario.Phones;
-                        usuarioAtual.Modified = Data;
-                        _banco.Update(usuarioAtual);
-                        _banco.SaveChanges();
-                    }
+                            usuarioAtual.Phones = usuario.Phones;
+                            usuarioAtual.Modified = Data;
+                            _banco.Update(usuarioAtual);
+                            _banco.SaveChanges();
+                        }
 
-                    return Ok();
-                }
+                        return Ok();
+                    }
                 else
                 {
                     string Existe = "E-mail já existente";
-                    return Ok(Existe);
+                    return BadRequest(Existe);
                 }
             }
             catch (Exception erro)
